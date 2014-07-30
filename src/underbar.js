@@ -101,6 +101,18 @@ var _ = {};
   _.reject = function(collection, test) {
     // TIP: see if you can re-use _.filter() here, without simply
     // copying code in and modifying it
+    var notPassed = [];
+    
+    notPassed = _.filter(collection, function(value){
+    	if(test(value)){
+    		return false;
+    	}
+    	else{
+    		return true;
+    	}
+    })
+    
+    return notPassed
   };
 
   // Produce a duplicate-free version of the array.
