@@ -92,7 +92,7 @@ var _ = {};
   		if(test(value)){
   			passed.push(value);
   		}
-  	})
+  	});
   	
   	return passed;
   };
@@ -110,13 +110,36 @@ var _ = {};
     	else{
     		return true;
     	}
-    })
+    });
     
-    return notPassed
+    return notPassed;
   };
 
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
+  	
+  	/*var dupeFree = array;  	
+  	  	
+  	_.each(dupeFree, function(value, index){
+  		for(var i = 0; i < dupeFree.length, i++){
+  			if(value === dupeFree[i] && i !== index){
+  				dupeFree.splice(i,1);
+  				i--;
+  			}
+  		}
+  	});
+  	
+  	return dupeFree;*/
+
+  	for(var i = 0; i < array.length; i++){
+  		for(var j = i+1; j < array.length; j++){
+  			if(array[j]===array[i] && j !== i){
+  				array.splice(j,1);
+  			}
+  		}
+  	}
+  	
+  	return array;
   };
 
 
