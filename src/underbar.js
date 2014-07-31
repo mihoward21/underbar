@@ -118,26 +118,13 @@ var _ = {};
   // Produce a duplicate-free version of the array.
   _.uniq = function(array) {
   	
-  	/*var dupeFree = array;  	
-  	  	
-  	_.each(dupeFree, function(value, index){
-  		for(var i = 0; i < dupeFree.length, i++){
-  			if(value === dupeFree[i] && i !== index){
-  				dupeFree.splice(i,1);
-  				i--;
+  	_.each(array, function(value,key){
+  		_.each(array, function(value2,key2){
+  			if(array[key2]===array[key] && key2 !== key){
+  				array.splice(key2,1);
   			}
-  		}
+  		});
   	});
-  	
-  	return dupeFree;*/
-
-  	for(var i = 0; i < array.length; i++){
-  		for(var j = i+1; j < array.length; j++){
-  			if(array[j]===array[i] && j !== i){
-  				array.splice(j,1);
-  			}
-  		}
-  	}
   	
   	return array;
   };
@@ -176,6 +163,7 @@ var _ = {};
   // Calls the method named by functionOrKey on each value in the list.
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
+  	
   };
 
   // Reduces an array or object to a single value by repetitively calling
