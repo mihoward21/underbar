@@ -164,6 +164,16 @@ var _ = {};
   // Note: you will nead to learn a bit about .apply to complete this.
   _.invoke = function(collection, functionOrKey, args) {
   	
+  	_.each(collection, function(value,key){
+  		if(typeof(functionOrKey) === 'string'){
+  			collection[key]=value[functionOrKey].apply(value);
+  		}
+  		else{
+  			collection[key]=functionOrKey.apply(value);
+  		}
+  		});
+  	
+  	return collection;
   };
 
   // Reduces an array or object to a single value by repetitively calling
