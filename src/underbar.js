@@ -338,6 +338,23 @@ var _ = {};
   // already computed the result for the given argument and return that value
   // instead if possible.
   _.memoize = function(func) {
+  	
+  	var inputs=[];
+  	var computedValues=[];
+  	var result;
+  	
+  	return function(prim){
+  		if(!_.contains(inputs,prim)){
+  			inputs.push(prim);
+  			result = func(prim);
+  			computedValues.push(result);
+  		}
+  		else{
+  			var i = _.indexOf(inputs,prim);
+  			result = computedValues[i];
+  		}
+  		return result;
+  	}
   };
 
   // Delays a function for the given number of milliseconds, and then calls
