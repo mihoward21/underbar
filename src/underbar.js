@@ -242,12 +242,15 @@ var _ = {};
     if(iterator === undefined){
     	var iterator = function(value) {return value;};
     }
-    for(var i = 0; i < collection.length; i++){
-    	if(iterator(collection[i])){
-    		return true;
+    
+    var passed = false;
+    _.each(collection, function(value, key){
+    	if(iterator(value)){
+    		passed = true;
     	}
-    }
-    return false;
+    });
+    return passed;
+    
   };
 
 
