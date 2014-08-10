@@ -368,10 +368,10 @@ var _ = {};
   // call someFunction('a', 'b') after 500ms
   _.delay = function(func, wait) {
   	var help = [];
-  	//arguments.slice(2,arguments.length);
   	for(var i = 2; i < arguments.length; i++){
   		help.push(arguments[i]);
   	}
+  	
   	if(help.length === 0){
   		setTimeout(func,wait);
   	}
