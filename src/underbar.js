@@ -233,8 +233,6 @@ var _ = {};
     }, true);
   };
     
-
-
   // Determine whether any of the elements pass a truth test. If no iterator is
   // provided, provide a default one
   _.some = function(collection, iterator) {
@@ -243,13 +241,11 @@ var _ = {};
     	var iterator = function(value) {return value;};
     }
     
-    var passed = false;
-    _.each(collection, function(value, key){
-    	if(iterator(value)){
-    		passed = true;
-    	}
+    var passed = _.every(collection, function(value){
+    	return !iterator(value);
     });
-    return passed;
+    
+    return !passed;
     
   };
 
